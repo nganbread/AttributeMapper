@@ -2,32 +2,40 @@
 using System.Linq;
 using System.Reflection;
 using AttributeMapper.Attributes;
+using AttributeMapper.Maps;
+using AttributeMapper.TypeConverters;
 
 namespace AttributeMapper
 {
     public static class AttributeMapper
     {
-        public static TOut Map<TOut>(object source)
+        static AttributeMapper()
         {
-            //Remove generics
-            var mapped = Map(source, typeof (TOut));
-            return Converter.CastOrDefault<TOut>(mapped);
+            TypeConverter = new TypeConverter(new TypeMapContainer());
         }
 
-        public static object Map(object source, Type destinationType)
+        private static readonly ITypeConverter TypeConverter;
+
+        public static object MapExplicit(object source, Type fromType, Type toType)
+        {
+            var method = typeof(AttributeMapper).GetMethod("Map");
+            method = method.MakeGenericMethod(fromType, toType);
+            return method.Invoke(null, new[] { source });
+        }
+
+        public static TTo Map<TFrom, TTo>(TFrom source)
         {
             //If there is an implicit conversion or registered mapper then do it
-            if (Converter.CanConvert(source, destinationType))
+            if (TypeConverter.CanConvert<TFrom, TTo>(source))
             {
-                return Converter.SafeConvert(source, destinationType);
+                return TypeConverter.SafeConvert<TFrom, TTo>(source);
             }
 
             //Lets create an instance of the destination and map over the individual properties
-
             var sourceType = source.GetType();
 
             var sourceProperties = sourceType.GetProperties();
-            var destinationProperties = destinationType
+            var destinationProperties = typeof (TTo)
                                             .GetProperties()
                                             .Select(x => new
                                             {
@@ -35,11 +43,11 @@ namespace AttributeMapper
                                                 Names = GetFromNames(x)
                                             });
             
-            //Create an instance of the destination
-            var destination = Activator.CreateInstance(destinationType);
+            //Create an instance of the destination if we can
+            if (typeof (TTo).IsAbstract || typeof (TTo).IsInterface) return default(TTo);
+            var destination = Activator.CreateInstance<TTo>();
 
             //Map over public properties
-            bool propertySuccessfullyMapped = false;
             foreach (var destinationProperty in destinationProperties)
             {
                 //check that there is a matching property to map from
@@ -47,20 +55,14 @@ namespace AttributeMapper
                 if (sourceProperty == null) continue;
                 
                 var sourcePropertyValue = sourceProperty.GetValue(source);
+                var sourcePropertyType = sourceProperty.PropertyType;
                 var destinationPropertyType = destinationProperty.PropertyInfo.PropertyType;
-                var destinationPropertyValue =  Map(sourcePropertyValue, destinationPropertyType);
+                var destinationPropertyValue = MapExplicit(sourcePropertyValue, sourcePropertyType, destinationPropertyType);
 
-                if (destinationPropertyValue != null)
-                {
-                    propertySuccessfullyMapped = true;
-                    destinationProperty.PropertyInfo.SetValue(destination, destinationPropertyValue);
-                }
+                destinationProperty.PropertyInfo.SetValue(destination, destinationPropertyValue);
             }
 
-            //if nothing was mapped then just return null
-            return propertySuccessfullyMapped
-                ? destination
-                : null;
+            return destination;
         }
 
         private static string[] GetFromNames(PropertyInfo propertyInfo)

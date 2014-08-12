@@ -1,54 +1,66 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using AttributeMapper.Maps.Contracts;
+using AttributeMapper.TypeConverters;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace AttributeMapper.Test.ConverterTests
 {
     [TestClass]
     public class CanConvertTests
     {
+        private TypeConverter _typeConverter;
+
+        [TestInitialize]
+        public void Init()
+        {
+            var typeContainer = new Mock<ITypeMapContainer>();
+            _typeConverter = new TypeConverter(typeContainer.Object);
+        }
+
         [TestMethod]
         public void WhenConvertingAStringToAnInt_ThenCanConvert()
         {
-            Assert.IsTrue(Converter.CanConvert("", typeof(int)));
+            Assert.IsTrue(_typeConverter.CanConvert<string, int>(""));
         }
         [TestMethod]
         public void WhenConvertingAnIntToAString_ThenCanConvert()
         {
-            Assert.IsTrue(Converter.CanConvert(5, typeof(string)));
+            Assert.IsTrue(_typeConverter.CanConvert<int, string>(5));
         }
 
         [TestMethod]
         public void WhenConvertingAnIntToADecimal_ThenTheDecimalFormOfTheIntIsReturned()
         {
-            Assert.IsTrue(Converter.CanConvert(5, typeof(decimal)));
+            Assert.IsTrue(_typeConverter.CanConvert<int, decimal>(5));
         }
 
         [TestMethod]
         public void WhenImplicitlyConvertingToAnInt_ThenANonDefaultValueReturned()
         {
-            Assert.IsTrue(Converter.CanConvert(new A(), typeof(int)));
+            Assert.IsTrue(_typeConverter.CanConvert<A, int>(new A()));
         }
 
         [TestMethod]
         public void WhenImplicitlyConvertingToAnotherClassType_ThenANonNullValueIsReturned()
         {
-            Assert.IsTrue(Converter.CanConvert(new A(), typeof(B)));
+            Assert.IsTrue(_typeConverter.CanConvert<A,B>(new A()));
         }
 
         [TestMethod]
         public void WhenImplicitlyConvertingToAnIncompatibleType_ThenNullIsReturned()
         {
-            Assert.IsFalse(Converter.CanConvert(new A(), typeof(C)));
+            Assert.IsFalse(_typeConverter.CanConvert<A,C>(new A()));
         }
 
         public void WhenConvertingNullToAnInt_ThenIntDefaultIsReturned()
         {
-            Assert.IsTrue(Converter.CanConvert(null, typeof(int)));
+            Assert.IsTrue(_typeConverter.CanConvert<A, int>(null));
         }
 
         [TestMethod]
         public void WhenConvertingNullToAClassType_ThenNullIsReturned()
         {
-            Assert.IsTrue(Converter.CanConvert(null, typeof(A)));
+            Assert.IsTrue(_typeConverter.CanConvert<A,A>(null));
         }
 
         public class A
@@ -68,7 +80,7 @@ namespace AttributeMapper.Test.ConverterTests
 
         public class C
         {
-            
+
         }
     }
 }
