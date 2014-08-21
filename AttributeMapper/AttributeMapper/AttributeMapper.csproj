@@ -30,17 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributeMapper.cs" />
     <Compile Include="Attributes\MapFromAttribute.cs" />
+    <Compile Include="Attributes\MapToAttribute.cs" />
+    <Compile Include="Exceptions\DuplicatePropertyNamesException.cs" />
+    <Compile Include="Maps\ITypeMapAdapterFactory.cs" />
+    <Compile Include="Maps\TypeMapAdapterFactory.cs" />
     <Compile Include="Maps\EnumerableFlexibleTypeMap.cs" />
     <Compile Include="TypeConverters\TypeConverter.cs" />
     <Compile Include="TypeConverters\ITypeConverter.cs" />
@@ -49,6 +49,7 @@
     <Compile Include="Maps\Contracts\ITypeMapContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Maps\TypeMapContainer.cs" />
+    <Compile Include="Maps\TypeMapAdapter.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

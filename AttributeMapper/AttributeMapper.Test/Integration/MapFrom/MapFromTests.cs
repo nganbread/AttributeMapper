@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AttributeMapper.Maps;
-using AttributeMapper.Test.Poco;
-using AttributeMapper.TypeConverters;
+using AttributeMapper.Test.Integration.MapFrom.Poco;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AttributeMapper.Test.Integration
+namespace AttributeMapper.Test.Integration.MapFrom
 {
     [TestClass]
     public class MapFromTests
@@ -19,27 +17,27 @@ namespace AttributeMapper.Test.Integration
             _source = new Source
             {
                 SourceInt = 1,
-                SourceString = "Hello",
-                SourceEnum = SourceEnum.B,
+                SourceString = "1",
+                SourceEnum = SourceEnum.A,
                 SourceObject = new NestedSource
                 {
-                    SourceInt = 1,
-                    SourceString = "Hello",
+                    SourceInt = 2,
+                    SourceString = "2",
                     SourceEnum = SourceEnum.B
                 },
                 SourceObjects = new List<NestedSource>
                 {
                     new NestedSource
                     {
-                        SourceInt = 1,
-                        SourceString = "Hello",
-                        SourceEnum = SourceEnum.B
+                        SourceInt = 3,
+                        SourceString = "3",
+                        SourceEnum = SourceEnum.C
                     },
                     new NestedSource
                     {
-                        SourceInt = 1,
-                        SourceString = "Hello",
-                        SourceEnum = SourceEnum.B
+                        SourceInt = 4,
+                        SourceString = "4",
+                        SourceEnum = SourceEnum.D
                     }
                 }
             };
@@ -138,7 +136,7 @@ namespace AttributeMapper.Test.Integration
         [TestMethod]
         public void EnumIsCorrectlyMapped()
         {
-            Assert.AreEqual(DestinationEnum.B, _destination.DestinationEnum);
+            Assert.AreEqual(DestinationEnum.A, _destination.DestinationEnum);
         }
 
         [TestMethod]

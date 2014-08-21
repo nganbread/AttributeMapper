@@ -4,11 +4,13 @@ namespace AttributeMapper.Attributes
 {
     public class MapFromAttribute : Attribute
     {
-        public string PropertyName { get; private set; }
-
-        public MapFromAttribute(string propertyName)
+        public MapFromAttribute(string propertyName, Type mapFromType = null)
         {
             PropertyName = propertyName;
+            MapFromType = mapFromType;
         }
+
+        public string PropertyName { get; private set; }
+        public Type MapFromType { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using AttributeMapper.Maps.Contracts;
+﻿using AttributeMapper.Maps.Contracts;
 
 namespace AttributeMapper.TypeConverters
 {
@@ -25,14 +24,8 @@ namespace AttributeMapper.TypeConverters
             //try find a map to resolve with
             if (_typeMapContainer.CanResolveMap<TFrom, TTo>())
             {
-                //hmm dangerous?
                 var converter = _typeMapContainer.ResolveMap<TFrom, TTo>();
-                var converted = converter.ConvertCore(source, toType);
-                if (converted is TTo) return (TTo) converted;
-
-                var message = "The type converter ({0}) did not convert the supplied object to a compatible type. Expected: {1}. Received {2}";
-                message = String.Format(message, converter, typeof (TTo), converted == null ? null : converted.GetType());
-                throw new Exception(message);
+                return converter.ConvertCore(source, toType);
             }
 
             //We might be able to convert implicitly
@@ -41,6 +34,7 @@ namespace AttributeMapper.TypeConverters
                 return ConvertImplicitly<TFrom, TTo>(source);
             }
 
+            //default fallback
             return default(TTo);
         }
 

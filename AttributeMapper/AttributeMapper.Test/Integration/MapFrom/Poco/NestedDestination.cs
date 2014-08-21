@@ -1,6 +1,6 @@
 ﻿using AttributeMapper.Attributes;
 
-namespace AttributeMapper.Test.Poco
+namespace AttributeMapper.Test.Integration.MapFrom.Poco
 {
     public class NestedDestination
     {

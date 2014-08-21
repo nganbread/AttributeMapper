@@ -38,9 +38,6 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -58,13 +55,29 @@
   <ItemGroup>
     <Compile Include="ConverterTests\CanConvertTests.cs" />
     <Compile Include="ConverterTests\SafeConvertTests.cs" />
-    <Compile Include="Poco\Destination.cs" />
-    <Compile Include="Poco\DestinationEnum.cs" />
-    <Compile Include="Poco\NestedDestination.cs" />
-    <Compile Include="Poco\NestedSource.cs" />
-    <Compile Include="Poco\Source.cs" />
-    <Compile Include="Poco\SourceEnum.cs" />
-    <Compile Include="Integration\MapFromTests.cs" />
+    <Compile Include="Integration\MapFromWithType\MapFromWithTypeTests.cs" />
+    <Compile Include="Integration\MapFromWithType\Poco\Destination.cs" />
+    <Compile Include="Integration\MapFromWithType\Poco\Source.cs" />
+    <Compile Include="Integration\MapFrom\Poco\Destination.cs" />
+    <Compile Include="Integration\MapFrom\Poco\DestinationEnum.cs" />
+    <Compile Include="Integration\MapFrom\Poco\NestedDestination.cs" />
+    <Compile Include="Integration\MapFrom\Poco\NestedSource.cs" />
+    <Compile Include="Integration\MapFrom\Poco\Source.cs" />
+    <Compile Include="Integration\MapFrom\Poco\SourceEnum.cs" />
+    <Compile Include="Integration\MapFrom\MapFromTests.cs" />
+    <Compile Include="Integration\MapToWithType\MapFromWithTypeTests.cs" />
+    <Compile Include="Integration\MapToWithType\Poco\Destination.cs" />
+    <Compile Include="Integration\MapToWithType\Poco\Source.cs" />
+    <Compile Include="Integration\MapTo\MapToTests.cs" />
+    <Compile Include="Integration\MapTo\Poco\Destination.cs" />
+    <Compile Include="Integration\MapTo\Poco\DestinationEnum.cs" />
+    <Compile Include="Integration\MapTo\Poco\NestedDestination.cs" />
+    <Compile Include="Integration\MapTo\Poco\NestedSource.cs" />
+    <Compile Include="Integration\MapTo\Poco\Source.cs" />
+    <Compile Include="Integration\MapTo\Poco\SourceEnum.cs" />
+    <Compile Include="Integration\Standard\Poco\Destination.cs" />
+    <Compile Include="Integration\Standard\Poco\Source.cs" />
+    <Compile Include="Integration\Standard\StandardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +89,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

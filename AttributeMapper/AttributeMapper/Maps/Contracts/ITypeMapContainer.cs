@@ -9,6 +9,6 @@
             where TTypeMap: ITypeMap<TFrom, TTo>;
 
         bool CanResolveMap<TFrom, TTo>();
-        ITypeMap ResolveMap<TFrom, TTo>();
+        ITypeMap<TFrom, TTo> ResolveMap<TFrom, TTo>();
     }
 }

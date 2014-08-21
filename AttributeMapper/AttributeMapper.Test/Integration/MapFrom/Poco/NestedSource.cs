@@ -1,4 +1,4 @@
-﻿namespace AttributeMapper.Test.Poco
+﻿namespace AttributeMapper.Test.Integration.MapFrom.Poco
 {
     public class NestedSource
     {

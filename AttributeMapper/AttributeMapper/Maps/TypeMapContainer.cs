@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AttributeMapper.Maps.Contracts;
+using AttributeMapper.TypeConverters;
 
 namespace AttributeMapper.Maps
 {
@@ -12,6 +13,13 @@ namespace AttributeMapper.Maps
         {
             new EnumerableFlexibleTypeMap()
         };
+
+        private readonly ITypeMapAdapterFactory _typeMapAdapterFactory;
+
+        public TypeMapContainer(ITypeMapAdapterFactory typeMapAdapterFactory)
+        {
+            _typeMapAdapterFactory = typeMapAdapterFactory;
+        }
 
         public void RegisterMap<TFlexibleTypeMap>(TFlexibleTypeMap map)
             where TFlexibleTypeMap : IFlexibleTypeMap
@@ -33,22 +41,22 @@ namespace AttributeMapper.Maps
                    _flexibleTypeMaps.Any(x => x.CanConvert(typeof (TFrom), typeof (TTo)));
         }
 
-        public ITypeMap ResolveMap<TFrom, TTo>()
+        public ITypeMap<TFrom, TTo> ResolveMap<TFrom, TTo>()
         {
             var mapType = _typeMaps.SingleOrDefault(x => x == typeof(ITypeMap<TFrom, TTo>));
             if (mapType != null)
             {
                 var map = Activator.CreateInstance(mapType);
-                return map as ITypeMap;
+                return map as ITypeMap<TFrom, TTo>;
             }
 
             var flexibleMap = _flexibleTypeMaps.LastOrDefault(x => x.CanConvert(typeof (TFrom), typeof (TTo)));
             if (flexibleMap != null)
             {
-                return flexibleMap;
+                return _typeMapAdapterFactory.Manufacture<TFrom, TTo>(flexibleMap);
             }
 
-            throw new Exception("Type resolution failed");
+            throw new Exception("Type map resolution failed");
         }
     }
 }
