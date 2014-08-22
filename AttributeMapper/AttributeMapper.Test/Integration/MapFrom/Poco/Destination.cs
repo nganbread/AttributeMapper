@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using AttributeMapper.Attributes;
 
@@ -16,5 +15,8 @@ namespace AttributeMapper.Test.Integration.MapFrom.Poco
         public int DestinationInt { get; set; }
         [MapFrom("SourceEnum")]
         public DestinationEnum DestinationEnum { get; set; }
+
+        [MapFrom("SourceField")] 
+        public int DestinationField;
     }
 }

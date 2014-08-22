@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using AttributeMapper.Test.Integration.MapFrom.Poco;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+
 
 namespace AttributeMapper.Test.Integration.MapFrom
 {
-    [TestClass]
+    [TestFixture]
     public class MapFromTests
     {
         private Source _source;
         private Destination _destination;
 
-        [TestInitialize]
+        [TestFixtureSetUp]
         public void Initialise()
         {
             _source = new Source
@@ -45,63 +46,63 @@ namespace AttributeMapper.Test.Integration.MapFrom
             _destination = AttributeMapper.Map<Source, Destination>(_source);
         }
 
-        [TestMethod]
+        [Test]
         public void WhenMappingNull_ThenNullIsReturned()
         {
             Assert.IsNull(AttributeMapper.Map<Source, Destination>(null));
         }
 
-        [TestMethod]
+        [Test]
         public void IsNotNull()
         {
             Assert.IsNotNull(_destination);
         }
 
-        [TestMethod]
+        [Test]
         public void IsTheCorrectType()
         {
-            Assert.IsInstanceOfType(_destination, typeof (Destination));
+            Assert.IsInstanceOf<Destination>(_destination);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectIsNotNull()
         {
             Assert.IsNotNull(_destination.DestinationObject);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectIsTheCorrectType()
         {
-            Assert.IsInstanceOfType(_destination.DestinationObject, typeof (NestedDestination));
+            Assert.IsInstanceOf<NestedDestination>(_destination.DestinationObject);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectIntIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.SourceObject.SourceInt, _destination.DestinationObject.DestinationInt);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectEnumIsCorrectlyMapped()
         {
             Assert.AreEqual(DestinationEnum.B, _destination.DestinationObject.DestinationEnum);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectsStringIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.SourceObjects.First().SourceString,
                 _destination.DestinationObjects.First().DestinationString);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectsIntIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.SourceObjects.First().SourceInt,
                 _destination.DestinationObjects.First().DestinationInt);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectsEnumIsCorrectlyMapped()
         {
             Assert.AreEqual(
@@ -109,43 +110,43 @@ namespace AttributeMapper.Test.Integration.MapFrom
                 (int)_destination.DestinationObjects.First().DestinationEnum);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectStringIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.SourceObject.SourceString, _destination.DestinationObject.DestinationString);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectsIsNotNull()
         {
             Assert.IsNotNull(_destination.DestinationObjects);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectsIsTheCorrectType()
         {
-            Assert.IsInstanceOfType(_destination.DestinationObjects, typeof (List<NestedDestination>));
+            Assert.IsInstanceOf<List<NestedDestination>>(_destination.DestinationObjects);
         }
 
-        [TestMethod]
+        [Test]
         public void ObjectsHasTheCorrectCount()
         {
             Assert.AreEqual(_destination.DestinationObjects.Count(), _source.SourceObjects.Count());
         }
 
-        [TestMethod]
+        [Test]
         public void EnumIsCorrectlyMapped()
         {
             Assert.AreEqual(DestinationEnum.A, _destination.DestinationEnum);
         }
 
-        [TestMethod]
+        [Test]
         public void IntIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.SourceInt, _destination.DestinationInt);
         }
 
-        [TestMethod]
+        [Test]
         public void StringIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.SourceString, _destination.DestinationString);

@@ -1,6 +1,6 @@
-using AttributeMapper.Maps.Contracts;
+using AttributeMapper.TypeMaps.Contracts;
 
-namespace AttributeMapper.Maps
+namespace AttributeMapper.TypeMaps
 {
     public interface ITypeMapAdapterFactory
     {

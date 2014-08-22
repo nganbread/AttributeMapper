@@ -2,15 +2,17 @@
 
 namespace AttributeMapper.Attributes
 {
-    public class MapFromAttribute : Attribute
+    public class MapFromAttribute : MapAttributeBase
     {
-        public MapFromAttribute(string propertyName, Type mapFromType = null)
+        public MapFromAttribute(string propertyName, Type type = null) 
+            : base(propertyName, type)
         {
-            PropertyName = propertyName;
-            MapFromType = mapFromType;
         }
 
-        public string PropertyName { get; private set; }
-        public Type MapFromType { get; set; }
+        public Type MapFromType
+        {
+            get { return Type; } 
+            set { Type = value; }
+        }
     }
 }

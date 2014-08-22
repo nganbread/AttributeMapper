@@ -1,4 +1,6 @@
-﻿namespace AttributeMapper.Maps.Contracts
+﻿using AttributeMapper.TypeMaps.Contracts;
+
+namespace AttributeMapper.Core.Contracts
 {
     public interface ITypeMapContainer
     {

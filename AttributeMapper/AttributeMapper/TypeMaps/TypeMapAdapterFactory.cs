@@ -1,7 +1,7 @@
-using AttributeMapper.Maps.Contracts;
-using AttributeMapper.TypeConverters;
+using AttributeMapper.TypeMaps.Contracts;
+using AttributeMapper.TypeMaps.Maps;
 
-namespace AttributeMapper.Maps
+namespace AttributeMapper.TypeMaps
 {
     public class TypeMapAdapterFactory : ITypeMapAdapterFactory
     {

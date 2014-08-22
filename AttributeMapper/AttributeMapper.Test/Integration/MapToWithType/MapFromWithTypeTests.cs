@@ -1,15 +1,16 @@
 ﻿using AttributeMapper.Test.Integration.MapToWithType.Poco;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+
 
 namespace AttributeMapper.Test.Integration.MapToWithType
 {
-    [TestClass]
+    [TestFixture]
     public class MapToWithTypeTests
     {
         private Source _source;
         private Destination _destination;
 
-        [TestInitialize]
+        [TestFixtureSetUp]
         public void Initialise()
         {
             _source = new Source
@@ -21,13 +22,13 @@ namespace AttributeMapper.Test.Integration.MapToWithType
             _destination = AttributeMapper.Map<Source, Destination>(_source);
         }
 
-        [TestMethod]
+        [Test]
         public void WhenTheSourceTypeMatches_ThenThePropertyIsMapped()
         {
             Assert.AreEqual(_source.SourceInteger1, _destination.DestinationInteger1);
         }
 
-        [TestMethod]
+        [Test]
         public void WhenTheSourceTypeDoesNotMatch_ThenThePropertyIsNotMapped()
         {
             Assert.AreEqual(default(int), _destination.DestinationInteger2);

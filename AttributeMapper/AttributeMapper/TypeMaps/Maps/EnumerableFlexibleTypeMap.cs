@@ -1,12 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using AttributeMapper.Maps.Contracts;
+using AttributeMapper.Core.Contracts;
+using AttributeMapper.TypeMaps.Contracts;
 
-namespace AttributeMapper.Maps
+namespace AttributeMapper.TypeMaps.Maps
 {
     public class EnumerableFlexibleTypeMap : IFlexibleTypeMap
     {
+        private readonly IMapper _mapper;
+
+        public EnumerableFlexibleTypeMap(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         public object ConvertCore(object source, Type toType)
         {
             var fromEnumerableType = source.GetType().GetGenericArguments()[0];
@@ -17,7 +25,7 @@ namespace AttributeMapper.Maps
 
             foreach (var o in source as IEnumerable)
             {
-                genericList.Add(AttributeMapper.MapExplicit(o, fromEnumerableType, toEnumerableType));
+                genericList.Add(_mapper.MapExplicit(o, fromEnumerableType, toEnumerableType));
             }
 
             return genericList;

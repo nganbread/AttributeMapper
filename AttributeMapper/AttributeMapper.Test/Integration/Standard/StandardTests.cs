@@ -1,16 +1,17 @@
 ﻿using System;
 using AttributeMapper.Test.Integration.Standard.Poco;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+
 
 namespace AttributeMapper.Test.Integration.Standard
 {
-    [TestClass]
+    [TestFixture]
     public class StandardTests
     {
         private Source _source;
         private Destination _destination;
 
-        [TestInitialize]
+        [TestFixtureSetUp]
         public void Initialise()
         {
             _source = new Source
@@ -24,19 +25,19 @@ namespace AttributeMapper.Test.Integration.Standard
             _destination = AttributeMapper.Map<Source, Destination>(_source);
         }
 
-        [TestMethod]
+        [Test]
         public void SamePropertyNameAndSameTypeIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.IntegerWillMapToInteger, _destination.IntegerWillMapToInteger);
         }
 
-        [TestMethod]
+        [Test]
         public void SamePropertyNameAndDifferentTypeWontMap()
         {
             Assert.AreEqual(default(Guid), _destination.IntegerWontMapToGuid);
         }
 
-        [TestMethod]
+        [Test]
         public void SamePropertyNameAndImplicitlyCompatibleTypeIsCorrectlyMapped()
         {
             Assert.AreEqual(_source.IntegerWillImplicitlyMapToDouble, _destination.IntegerWillImplicitlyMapToDouble);

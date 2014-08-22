@@ -38,6 +38,9 @@
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.4.2.1408.0717\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -53,8 +56,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ConverterTests\CanConvertTests.cs" />
-    <Compile Include="ConverterTests\SafeConvertTests.cs" />
+    <Compile Include="Unit\PropertyInfoExtractor\ExtractFromProperties.cs" />
+    <Compile Include="Unit\PropertyInfoVerifier\Verify.cs" />
+    <Compile Include="Unit\TypeConverter\CanConvert.cs" />
+    <Compile Include="Unit\TypeConverter\SafeConvertTests.cs" />
     <Compile Include="Integration\MapFromWithType\MapFromWithTypeTests.cs" />
     <Compile Include="Integration\MapFromWithType\Poco\Destination.cs" />
     <Compile Include="Integration\MapFromWithType\Poco\Source.cs" />
@@ -89,7 +94,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Unit\Mapper\" />
+    <Folder Include="Unit\TypeMapContainer\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

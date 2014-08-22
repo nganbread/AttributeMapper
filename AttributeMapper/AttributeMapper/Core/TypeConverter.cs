@@ -1,6 +1,6 @@
-﻿using AttributeMapper.Maps.Contracts;
+﻿using AttributeMapper.Core.Contracts;
 
-namespace AttributeMapper.TypeConverters
+namespace AttributeMapper.Core
 {
     public class TypeConverter : ITypeConverter
     {

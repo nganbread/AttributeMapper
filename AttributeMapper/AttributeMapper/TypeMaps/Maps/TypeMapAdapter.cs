@@ -1,7 +1,7 @@
 using System;
-using AttributeMapper.Maps.Contracts;
+using AttributeMapper.TypeMaps.Contracts;
 
-namespace AttributeMapper.Maps
+namespace AttributeMapper.TypeMaps.Maps
 {
     public class TypeMapAdapter<TFrom, TTo> : ITypeMap<TFrom, TTo>
     {

@@ -1,4 +1,4 @@
-namespace AttributeMapper.TypeConverters
+namespace AttributeMapper.Core.Contracts
 {
     public interface ITypeConverter
     {

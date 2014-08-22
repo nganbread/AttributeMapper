@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AttributeMapper.Maps.Contracts
+namespace AttributeMapper.TypeMaps.Contracts
 {
     public interface ITypeMap<in TFrom, out TTo>
     {
