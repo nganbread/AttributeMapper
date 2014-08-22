@@ -10,20 +10,31 @@ To map properties and fields on the following
 
     public class Source
     {
-      public object Property { get; set; }
-      public object Field;
-      public object SourceProperty { get; set; }
+      public int Property { get; set; }
+      
+      public int Field;
+      
+      public int SourceProperty { get; set; }
+      
       [MapTo("DestinationField")]
-      public object SourceField;
+      public int SourceField;
+      
+      public Source Source;
     }
     
     public class Destination
     {
-      public object Property { get; set; }
-      public object Field;
+      public int Property { get; set; }
+      
+      public int Field;
+      
       [MapFrom("SourceProperty")]
-      public object DestinationProperty { get; set;}
-      public object DestinationField;
+      public int DestinationProperty { get; set;}
+      
+      public int DestinationField;
+      
+      [MapFrom("Source")]
+      public Destination Destination;
     }
     
 Is as easy as
@@ -33,12 +44,25 @@ Is as easy as
         Property = 1,
         Field = 2,
         SourceProperty = 3,
-        SourceField = 4
+        SourceField = 4,
+        Source = new Source
+        {
+            Property = 5,
+            Field = 6,
+            SourceProperty = 7,
+            SourceField = 8,
+            Source = null
+        }
     };
     
     var destination = AttributeMapper.Map<Source, Destination>(source);
     
-    //destination.Property -> 1
-    //destination.Field -> 2
-    //destination.SourceProperty -> 3
-    //destination.SourceField -> 4
+    //destination.Property                      -> 1
+    //destination.Field                         -> 2
+    //destination.DestinationProperty           -> 3
+    //destination.DestinationField              -> 4
+    //destination.Destination.Property          -> 5
+    //destination.Destination.Field             -> 6
+    //destination.Destination.SourceProperty    -> 7
+    //destination.Destination.SourceField       -> 8
+    //destination.Destination.Destination       -> null
