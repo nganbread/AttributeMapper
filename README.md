@@ -6,7 +6,7 @@ A small mapping library to orchestrate maps by using property and field attribut
 How
 ===============
 
-Mapping properties and fields on the following
+To map properties and fields on the following
 
     public class Source
     {
