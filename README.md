@@ -10,31 +10,31 @@ To map properties and fields on the following
 
     public class Source
     {
-      public int Property { get; set; }
+        public int Property { get; set; }
       
-      public int Field;
+        public int Field;
       
-      public int SourceProperty { get; set; }
+        public int SourceProperty { get; set; }
       
-      [MapTo("DestinationField")]
-      public int SourceField;
+        [MapTo("DestinationField")]
+        public int SourceField;
       
-      public Source Source;
+        public Source Source;
     }
     
     public class Destination
     {
-      public int Property { get; set; }
+        public int Property { get; set; }
       
-      public int Field;
+        public int Field;
       
-      [MapFrom("SourceProperty")]
-      public int DestinationProperty { get; set;}
+        [MapFrom("SourceProperty")]
+        public int DestinationProperty { get; set;}
       
-      public int DestinationField;
+        public int DestinationField;
       
-      [MapFrom("Source")]
-      public Destination Destination;
+        [MapFrom("Source")]
+        public Destination Destination;
     }
     
 Is as easy as
