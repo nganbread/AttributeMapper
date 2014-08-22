@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AttributeMapper.Core
+namespace AttributeMapper.Core.Contracts
 {
     public interface IMemberInfoProxy
     {

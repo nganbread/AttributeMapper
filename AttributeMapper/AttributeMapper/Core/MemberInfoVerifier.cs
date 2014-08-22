@@ -12,7 +12,7 @@ namespace AttributeMapper.Core
             var names = properties.SelectMany(x => x.Names.Distinct()).ToList();
             if (names.Count() != names.Distinct().Count())
             {
-                throw new DuplicatePropertyNamesException<T>(names);
+                throw new DuplicateMemberNamesException<T>(names);
             }   
         }
     }

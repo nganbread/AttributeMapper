@@ -56,8 +56,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Unit\PropertyInfoExtractor\ExtractFromProperties.cs" />
-    <Compile Include="Unit\PropertyInfoVerifier\Verify.cs" />
+    <Compile Include="Unit\MemberInfoExtractor\ExtractFromMember.cs" />
+    <Compile Include="Unit\MemberInfoVerifier\Verify.cs" />
     <Compile Include="Unit\TypeConverter\CanConvert.cs" />
     <Compile Include="Unit\TypeConverter\SafeConvertTests.cs" />
     <Compile Include="Integration\MapFromWithType\MapFromWithTypeTests.cs" />
@@ -84,6 +84,7 @@
     <Compile Include="Integration\Standard\Poco\Source.cs" />
     <Compile Include="Integration\Standard\StandardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\TypeMapContainer\RegisterMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AttributeMapper\AttributeMapper.csproj">
@@ -96,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Unit\Mapper\" />
-    <Folder Include="Unit\TypeMapContainer\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using AttributeMapper.Core.Contracts;
 
-namespace AttributeMapper.Core
+namespace AttributeMapper.MemberInfoProxy
 {
     public abstract class MemberInfoProxyBase : IMemberInfoProxy
     {
         private readonly IList<string> _names;
 
-        protected MemberInfoProxyBase(MemberInfo fieldInfo, IEnumerable<string> aliases)
+        protected MemberInfoProxyBase(System.Reflection.MemberInfo fieldInfo, IEnumerable<string> aliases)
         {
             _names = aliases
                 .Concat(new[] { fieldInfo.Name })

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AttributeMapper.Core.Contracts;
+using AttributeMapper.Exceptions;
 using AttributeMapper.TypeMaps;
 using AttributeMapper.TypeMaps.Contracts;
 
@@ -28,14 +29,15 @@ namespace AttributeMapper.Core
         public void RegisterMap<TTypeMap, TFrom, TTo>()
             where TTypeMap: ITypeMap<TFrom, TTo>
         {
-            if(typeof(TTypeMap).IsInterface || typeof(TTypeMap).IsAbstract) throw new Exception("Must register a concrete type");
+            if(typeof(TTypeMap).IsInterface) throw new CanNotRegisterAnInterfaceTypeException<TTypeMap>();
+            if(typeof(TTypeMap).IsAbstract) throw new CanNotRegisterAnAbstractTypeException<TTypeMap>();
 
             _typeMaps.Add(typeof(TTypeMap));
         }
 
         public bool CanResolveMap<TFrom, TTo>()
         {
-            return _typeMaps.Any(x => x == typeof (ITypeMap<TFrom, TTo>)) ||
+            return _typeMaps.Any(x => x.GetInterfaces().Any(y => y == typeof (ITypeMap<TFrom, TTo>))) ||
                    _flexibleTypeMaps.Any(x => x.CanConvert(typeof (TFrom), typeof (TTo)));
         }
 
