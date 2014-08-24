@@ -5,7 +5,7 @@ using AttributeMapper.Core.Contracts;
 
 namespace AttributeMapper.Core
 {
-    public class Mapper : IMapper
+    internal class Mapper : IMapper
     {
         private readonly ITypeConverter _typeConverter;
         private readonly IMemberInfoExtractor _memberInfoExtractor;

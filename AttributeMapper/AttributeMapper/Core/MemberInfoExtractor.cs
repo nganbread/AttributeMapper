@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using AttributeMapper.Attributes;
 using AttributeMapper.Core.Contracts;
 using AttributeMapper.MemberInfoProxy;
 
 namespace AttributeMapper.Core
 {
-    public class MemberInfoExtractor : IMemberInfoExtractor
+    internal class MemberInfoExtractor : IMemberInfoExtractor
     {
         private readonly IMemberInfoVerifier _memberInfoVerifier;
 

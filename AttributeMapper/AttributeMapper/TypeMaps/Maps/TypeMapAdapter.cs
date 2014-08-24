@@ -3,7 +3,7 @@ using AttributeMapper.TypeMaps.Contracts;
 
 namespace AttributeMapper.TypeMaps.Maps
 {
-    public class TypeMapAdapter<TFrom, TTo> : ITypeMap<TFrom, TTo>
+    internal class TypeMapAdapter<TFrom, TTo> : ITypeMap<TFrom, TTo>
     {
         private readonly IFlexibleTypeMap _flexibleTypeMap;
 

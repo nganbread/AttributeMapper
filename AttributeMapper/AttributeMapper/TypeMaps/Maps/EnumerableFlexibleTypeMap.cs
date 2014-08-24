@@ -6,7 +6,7 @@ using AttributeMapper.TypeMaps.Contracts;
 
 namespace AttributeMapper.TypeMaps.Maps
 {
-    public class EnumerableFlexibleTypeMap : IFlexibleTypeMap
+    internal class EnumerableFlexibleTypeMap : IFlexibleTypeMap
     {
         private readonly IMapper _mapper;
 

@@ -3,7 +3,7 @@ using AttributeMapper.TypeMaps.Maps;
 
 namespace AttributeMapper.TypeMaps
 {
-    public class TypeMapAdapterFactory : ITypeMapAdapterFactory
+    internal class TypeMapAdapterFactory : ITypeMapAdapterFactory
     {
         public ITypeMap<TFrom, TTo> Manufacture<TFrom, TTo>(IFlexibleTypeMap flexibleMap)
         {

@@ -2,7 +2,7 @@
 
 namespace AttributeMapper.Core
 {
-    public class TypeConverter : ITypeConverter
+    internal class TypeConverter : ITypeConverter
     {
         private readonly ITypeMapContainer _typeMapContainer;
 

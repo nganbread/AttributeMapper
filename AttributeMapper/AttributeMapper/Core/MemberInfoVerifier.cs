@@ -5,7 +5,7 @@ using AttributeMapper.Exceptions;
 
 namespace AttributeMapper.Core
 {
-    public class MemberInfoVerifier : IMemberInfoVerifier
+    internal class MemberInfoVerifier : IMemberInfoVerifier
     {
         public void Verify<T>(IList<IMemberInfoProxy> properties)
         {

@@ -2,7 +2,7 @@
 
 namespace AttributeMapper.Attributes
 {
-    public class MapToAttribute : MapAttributeBase
+    internal class MapToAttribute : MapAttributeBase
     {
         public MapToAttribute(string propertyName, Type type = null) 
             : base(propertyName, type)

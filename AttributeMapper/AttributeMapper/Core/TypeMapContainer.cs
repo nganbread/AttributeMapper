@@ -8,7 +8,7 @@ using AttributeMapper.TypeMaps.Contracts;
 
 namespace AttributeMapper.Core
 {
-    public class TypeMapContainer : ITypeMapContainer
+    internal class TypeMapContainer : ITypeMapContainer
     {
         private readonly ISet<Type> _typeMaps = new HashSet<Type>();
         private readonly IList<IFlexibleTypeMap> _flexibleTypeMaps = new List<IFlexibleTypeMap>();

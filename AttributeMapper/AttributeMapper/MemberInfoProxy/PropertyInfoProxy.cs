@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace AttributeMapper.MemberInfoProxy
 {
-    public class PropertyInfoProxy : MemberInfoProxyBase
+    internal class PropertyInfoProxy : MemberInfoProxyBase
     {
         private readonly PropertyInfo _propertyInfo;
 
