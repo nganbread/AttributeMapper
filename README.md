@@ -57,12 +57,12 @@ Is as easy as
     
     var destination = AttributeMapper.Map<Source, Destination>(source);
     
-    //destination.Property                      -> 1
-    //destination.Field                         -> 2
-    //destination.DestinationProperty           -> 3
-    //destination.DestinationField              -> 4
-    //destination.Destination.Property          -> 5
-    //destination.Destination.Field             -> 6
-    //destination.Destination.SourceProperty    -> 7
-    //destination.Destination.SourceField       -> 8
-    //destination.Destination.Destination       -> null
+    // destination.Property                      -> 1
+    // destination.Field                         -> 2
+    // destination.DestinationProperty           -> 3
+    // destination.DestinationField              -> 4
+    // destination.Destination.Property          -> 5
+    // destination.Destination.Field             -> 6
+    // destination.Destination.SourceProperty    -> 7
+    // destination.Destination.SourceField       -> 8
+    // destination.Destination.Destination       -> null
