@@ -1,7 +1,7 @@
 AttributeMapper
 ===============
 
-A small mapping library to orchestrate maps by using property and field attributes
+A small C# library to orchestrate mappings using property and field attributes
 
 How
 ===============
