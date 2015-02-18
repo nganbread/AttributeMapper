@@ -1,4 +1,6 @@
-﻿using AttributeMapper.Test.Integration.MapFromWithType.Poco;
+﻿using System;
+using AttributeMapper.Test.Integration.MapFromWithType.Poco;
+using AttributeMapper.TypeMaps.Contracts;
 using NUnit.Framework;
 
 

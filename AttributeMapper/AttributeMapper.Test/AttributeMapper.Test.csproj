@@ -56,6 +56,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Integration\StandardUsingFlexibleTypeMapsTests\StandardUsingFlexibleTypeMapsTests.cs" />
+    <Compile Include="Integration\StandardUsingFlexibleTypeMapsTests\Maps\IntToStringFlexibleTypeMap.cs" />
+    <Compile Include="Integration\StandardUsingFlexibleTypeMapsTests\Maps\IntToSubDestinationFlexibleTypeMap.cs" />
+    <Compile Include="Integration\StandardUsingFlexibleTypeMapsTests\Poco\Destination.cs" />
+    <Compile Include="Integration\StandardUsingFlexibleTypeMapsTests\Poco\Source.cs" />
+    <Compile Include="Integration\StandardUsingFlexibleTypeMapsTests\Poco\SubDestination.cs" />
+    <Compile Include="Integration\StandardUsingTypeMapsTests\StandardUsingTypeMapsTests.cs" />
+    <Compile Include="Integration\StandardUsingTypeMapsTests\Maps\IntToStringTypeMap.cs" />
+    <Compile Include="Integration\StandardUsingTypeMapsTests\Maps\IntToSubDestinationTypeMap.cs" />
+    <Compile Include="Integration\StandardUsingTypeMapsTests\Poco\Destination.cs" />
+    <Compile Include="Integration\StandardUsingTypeMapsTests\Poco\Source.cs" />
+    <Compile Include="Integration\StandardUsingTypeMapsTests\Poco\SubDestination.cs" />
     <Compile Include="Unit\MemberInfoExtractor\ExtractFromMember.cs" />
     <Compile Include="Unit\MemberInfoVerifier\Verify.cs" />
     <Compile Include="Unit\TypeConverter\CanConvert.cs" />

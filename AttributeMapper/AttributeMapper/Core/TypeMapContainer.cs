@@ -43,7 +43,7 @@ namespace AttributeMapper.Core
 
         public ITypeMap<TFrom, TTo> ResolveMap<TFrom, TTo>()
         {
-            var mapType = _typeMaps.SingleOrDefault(x => x == typeof(ITypeMap<TFrom, TTo>));
+            var mapType = _typeMaps.FirstOrDefault(x => x.GetInterfaces().Any(y => y == typeof(ITypeMap<TFrom, TTo>)));
             if (mapType != null)
             {
                 var map = Activator.CreateInstance(mapType);
