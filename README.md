@@ -16,7 +16,7 @@ To map properties and fields on the following
       
         public int SourceProperty { get; set; }
       
-        [MapTo("DestinationField")]
+        [MapTo(nameof(Destination.DestinationField))]
         public int SourceField;
       
         public Source Source;
@@ -28,12 +28,12 @@ To map properties and fields on the following
       
         public int Field;
       
-        [MapFrom("SourceProperty")]
+        [MapFrom(nameof(Source.SourceProperty))]
         public int DestinationProperty { get; set;}
       
         public int DestinationField;
       
-        [MapFrom("Source")]
+        [MapFrom(nameof(Source)]
         public Destination Destination;
     }
     
