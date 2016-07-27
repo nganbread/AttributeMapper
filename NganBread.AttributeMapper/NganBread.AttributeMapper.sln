@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{83556825-B25F-426F-9EF7-9FFC937BB612}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{464E8FA3-5AA7-455B-8DC7-1EE76E5B8C56}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NganBread.AttributeMapper", "src\NganBread.AttributeMapper\NganBread.AttributeMapper.xproj", "{0E3CEBD5-78AE-478D-BF10-9E4B7A15CFFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{04AFA353-CA9C-4660-BCD8-1798DB7FFDC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NganBread.AttributeMapper.Test.Net461", "Test\NganBread.AttributeMapper.Test\NganBread.AttributeMapper.Test.Net461.csproj", "{2593A8BF-2153-48FF-8194-9B67123819ED}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NganBread.AttributeMapper.Test.Core", "test\NganBread.AttributeMapper.Test.Core\NganBread.AttributeMapper.Test.Core.xproj", "{AF17DCCC-FD6B-49E9-8CFB-1A31EDA6A58B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E3CEBD5-78AE-478D-BF10-9E4B7A15CFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3CEBD5-78AE-478D-BF10-9E4B7A15CFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3CEBD5-78AE-478D-BF10-9E4B7A15CFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3CEBD5-78AE-478D-BF10-9E4B7A15CFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2593A8BF-2153-48FF-8194-9B67123819ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2593A8BF-2153-48FF-8194-9B67123819ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2593A8BF-2153-48FF-8194-9B67123819ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2593A8BF-2153-48FF-8194-9B67123819ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF17DCCC-FD6B-49E9-8CFB-1A31EDA6A58B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF17DCCC-FD6B-49E9-8CFB-1A31EDA6A58B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF17DCCC-FD6B-49E9-8CFB-1A31EDA6A58B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF17DCCC-FD6B-49E9-8CFB-1A31EDA6A58B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E3CEBD5-78AE-478D-BF10-9E4B7A15CFFC} = {83556825-B25F-426F-9EF7-9FFC937BB612}
+		{2593A8BF-2153-48FF-8194-9B67123819ED} = {04AFA353-CA9C-4660-BCD8-1798DB7FFDC6}
+		{AF17DCCC-FD6B-49E9-8CFB-1A31EDA6A58B} = {04AFA353-CA9C-4660-BCD8-1798DB7FFDC6}
+	EndGlobalSection
+EndGlobal
