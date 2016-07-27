@@ -7,7 +7,7 @@ How
 ===============
 
 To map properties and fields on the following
-
+```cs
     public class Source
     {
         public int Property { get; set; }
@@ -36,9 +36,9 @@ To map properties and fields on the following
         [MapFrom(nameof(Source)]
         public Destination Destination;
     }
-    
+``` 
 Is as easy as
-    
+```cs   
     var source = new Source
     {
         Property = 1,
@@ -66,3 +66,4 @@ Is as easy as
     // destination.Destination.SourceProperty    -> 7
     // destination.Destination.SourceField       -> 8
     // destination.Destination.Destination       -> null
+```
